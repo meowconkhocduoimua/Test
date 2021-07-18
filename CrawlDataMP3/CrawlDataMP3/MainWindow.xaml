@@ -1,0 +1,85 @@
+﻿<Window x:Class="CrawlDataMP3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CrawlDataMP3"
+        mc:Ignorable="d"
+        xmlns:uc="clr-namespace:CrawlDataMP3"
+         WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+
+        Title="MainWindow" Height="750" Width="800">
+    <Grid>
+        <Grid x:Name="GridTop10">
+            <Grid.Resources>
+                <Style TargetType="ToggleButton">
+                    
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--nút bấm BXH-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ToggleButton IsChecked="{Binding IsCheckVN}" Margin="5" Grid.Column="0" Content="Bảng xếp hạng VN"></ToggleButton>
+                <ToggleButton IsChecked="{Binding IsCheckEU}" Margin="5" Grid.Column="1" Content="Bảng xếp hạng EU"></ToggleButton>
+                <ToggleButton IsChecked="{Binding IsCheckKO}" Margin="5" Grid.Column="2" Content="Bảng xếp hạng KO"></ToggleButton>
+            </Grid>
+            <!--Danh sách bài hát-->
+            <Grid Grid.Row="1">
+
+                <ListBox x:Name="lsbTopSongs" HorizontalContentAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border VerticalAlignment="Stretch" Height="50" BorderBrush="Black" BorderThickness="2">
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <TextBlock  FontSize="15" Text="1"></TextBlock>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <TextBlock HorizontalAlignment="Left" FontSize="15" Text="Tên bài hát"></TextBlock>
+                                        </Grid>
+
+                                        <Grid Grid.Row="1">
+                                            <TextBlock  HorizontalAlignment="Left" FontSize="15" Text="Tên ca sĩ"></TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                    <Button Grid.Column="2" Click="Button_Click"></Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
+        <Grid >
+            <uc:SongInfoUC x:Name="gridSongInfo" Visibility="Hidden"></uc:SongInfoUC>
+        </Grid>
+
+    </Grid>
+    
+</Window>
